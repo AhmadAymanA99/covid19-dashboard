@@ -15,6 +15,7 @@
     "cheerio-without-node-native": "^0.20.2",
     "expo": "~37.0.3",
     "expo-facebook": "~8.1.0",
+    "expo-permissions": "^8.1.0",
     "firebase": "^7.14.2",
     "moment": "^2.24.0",
     "native-base": "^2.13.12",

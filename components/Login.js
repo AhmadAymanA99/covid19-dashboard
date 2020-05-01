@@ -3,17 +3,8 @@ import { StyleSheet, Text } from 'react-native'
 import * as firebase from 'firebase'
 import * as facebook from 'expo-facebook'
 import { Container, Form, Input, Item, Button, Label } from 'native-base'
+import { firebaseConfig } from '../utils/helpers'
 
-const firebaseConfig = {
-    apiKey: "AIzaSyC_VmTtGnKaVaC36JjCnqqpfCA1A19pkh4",
-    authDomain: "cbsd-project-ed2bc.firebaseapp.com",
-    databaseURL: "https://cbsd-project-ed2bc.firebaseio.com",
-    projectId: "cbsd-project-ed2bc",
-    storageBucket: "cbsd-project-ed2bc.appspot.com",
-    messagingSenderId: "694918036358",
-    appId: "1:694918036358:web:c2287190cad71cb5608a07",
-    measurementId: "G-38V4645TP5"
-}
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig)
@@ -27,7 +18,7 @@ const Login = ({ navigation }) => {
     useEffect(() => {
         firebase.auth().onAuthStateChanged(user => {
             if (user !== null) {
-                navigation.navigate('DrawerT', { screen: 'Home', params: { user: user.uid } })
+                navigation.navigate('DrawerT', { screen: 'Profile', params: { user } })
             }
             else {
                 console.log('no user')

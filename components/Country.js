@@ -1,19 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
+import { countriesAPI } from '../utils/helpers'
+
 const numeral = require("numeral")
-
-
-const api = (country) => {
-    return fetch(`https://api.opencagedata.com/geocode/v1/json?q=${country}&key=bc242637ff4a4107b0eae494a73b5f2a&pretty=1`)
-        .then((response) => response.json())
-        .then((data) => {
-            return {
-                geometry: data.results[0].geometry
-            }
-        })
-
-}
 
 const Country = ({ navigation, route }) => {
     const country = route.params ? route.params.country["Country"] : 'Egypt'
@@ -22,7 +12,7 @@ const Country = ({ navigation, route }) => {
     const [lng, setlng] = useState(0)
 
     useEffect(() => {
-        api(country)
+        countriesAPI(country)
             .then(({ geometry }) => {
                 setlat(geometry.lat)
                 setlng(geometry.lng)

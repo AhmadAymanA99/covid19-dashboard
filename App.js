@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavigationContainer, DrawerActions } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createDrawerNavigator } from '@react-navigation/drawer'
@@ -10,6 +10,9 @@ import Logout from './components/Logout'
 import Dashboard from './components/Dashboard'
 import Country from './components/Country'
 import HealthAdvice from './components/HealthAdvice'
+import Profile from './components/Profile'
+
+import { setLocalNotification } from './utils/helpers'
 
 const Drawer = createDrawerNavigator()
 
@@ -27,6 +30,7 @@ DrawerT = ({ navigation }) => {
       <Drawer.Screen name="Dashboard" component={Dashboard} options={{ drawerIcon: () => <FontAwesome name='dashboard' size={25} color={"#007bff"} /> }} />
       <Drawer.Screen name="Country" component={Country} options={{ drawerIcon: () => <AntDesign name='earth' size={25} color={"#007bff"} /> }} />
       <Drawer.Screen name="HealthAdvice" component={HealthAdvice} options={{ title: "Health Care", drawerIcon: () => <Ionicons name='md-information-circle' size={30} color={"#007bff"} /> }} />
+      <Drawer.Screen name="Profile" component={Profile} options={{ title: "My Profile", drawerIcon: () => <AntDesign name='user' size={25} color={"#007bff"} /> }} />
       <Drawer.Screen name="Logout" component={Logout} options={{ drawerIcon: () => <Ionicons name='md-exit' size={30} color={"red"} /> }} />
     </Drawer.Navigator>
   )
@@ -35,6 +39,11 @@ DrawerT = ({ navigation }) => {
 const Stack = createStackNavigator()
 
 export default function App() {
+
+  useEffect(() => {
+    //console.log("notify")
+    setLocalNotification()
+  }, [])
 
   return (
     <NavigationContainer>

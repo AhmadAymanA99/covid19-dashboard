@@ -1,34 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { Text, StyleSheet } from 'react-native'
 import { Container, Content, List, ListItem } from 'native-base'
-const fetch = require("node-fetch")
+import { api } from '../utils/helpers'
+
 const numeral = require("numeral")
-
-const api = () => {
-    return fetch("https://api.covid19api.com/summary")
-        .then((response) => response.json())
-        .then((data) => {
-            //console.log("Countries: ", data.Countries)
-            data.Countries.sort((a, b) => {
-                return a["TotalConfirmed"] < b["TotalConfirmed"]
-            })
-            return {
-                Countries: data.Countries
-            }
-        })
-
-}
 
 const Dashboard = ({ navigation, route }) => {
     const [countries, setCountries] = useState("")
-    const [sorting, setSorting] = useState("")
+    //const [sorting, setSorting] = useState(countries)
 
     useEffect(() => {
         api()
             .then(({ Countries }) => setCountries(Countries))
             .catch(err => alert("Error Occured, Rsestart the app."))
-
-        //console.log(summary)
+        console.log("api")
     }, [])
 
     return (

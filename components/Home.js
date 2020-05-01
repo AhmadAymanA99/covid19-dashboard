@@ -1,24 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { Container, Content, Card, CardItem, Body } from "native-base"
-
-const fetch = require("node-fetch")
+import { api } from '../utils/helpers'
 const numeral = require("numeral")
 
-const api = () => {
-    return fetch("https://api.covid19api.com/summary")
-        .then((response) => response.json())
-        .then((data) => {
-            return {
-                sum: data.Global,
-                date: data.Countries[0]["Date"]
-            }
-        })
-}
 
 const Home = ({ navigation, route }) => {
-    //const { user } = route.params
-
+    // const { user } = route.params
+    // console.log(user)
     const [summary, setSummary] = useState("")
     const [date, setDate] = useState("")
 
