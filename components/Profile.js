@@ -10,7 +10,7 @@ if (!firebase.apps.length) {
 }
 
 const Profile = ({ route, navigation }) => {
-    const { user } = route.params
+    const user = firebase.auth().currentUser
     const [displayName, setdisplayName] = useState(user.displayName)
     const [email, setemail] = useState(user.email)
     const [password, setpassword] = useState("")

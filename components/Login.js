@@ -18,7 +18,7 @@ const Login = ({ navigation }) => {
     useEffect(() => {
         firebase.auth().onAuthStateChanged(user => {
             if (user !== null) {
-                navigation.navigate('DrawerT', { screen: 'Profile', params: { user } })
+                navigation.navigate('DrawerT')
             }
             else {
                 console.log('no user')
@@ -53,7 +53,7 @@ const Login = ({ navigation }) => {
         try {
             firebase.auth().signInWithEmailAndPassword(email, password)
                 .then((user) => {
-                    navigation.navigate('DrawerT', { screen: 'Home', params: { user: user.uid } })
+
                     setEmail("")
                     setPassword("")
                 })
