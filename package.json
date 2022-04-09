@@ -17,7 +17,7 @@
     "expo-facebook": "~8.1.0",
     "expo-permissions": "^8.1.0",
     "firebase": "^7.14.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "native-base": "^2.13.12",
     "node-fetch": "^2.6.0",
     "numeral": "^2.0.6",
