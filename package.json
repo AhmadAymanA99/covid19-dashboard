@@ -19,7 +19,7 @@
     "firebase": "^7.14.2",
     "moment": "^2.24.0",
     "native-base": "^2.13.12",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "numeral": "^2.0.6",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
